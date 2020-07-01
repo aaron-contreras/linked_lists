@@ -63,6 +63,7 @@ puts list
 list.insert_at 25, 0
 list.insert_at 100, 3
 list.insert_at 42, 2
+puts list
 list.insert_at 9_999, 6
 list.insert_at 158_147, 23 #=> no effect
 puts list #=> ( 25 ) -> ( 4 ) -> (42) -> (5) -> (100) -> ( 7 ) -> (99999) -> nil

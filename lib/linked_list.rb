@@ -97,13 +97,12 @@ class LinkedList
   end
 
   def insert_at(value, index)
-    return if index.negative?
+    return if index.negative? || index > size
 
     if index.zero?
       @head = Node.new(value, @head)
     else
       previous_node = find_node_before_index index
-      return if previous_node.nil?
 
       new_node = Node.new(value, previous_node.next_node)
       previous_node.next_node = new_node
@@ -112,11 +111,10 @@ class LinkedList
   end
 
   def remove_at(index)
-    return if index.negative?
+    return if index.negative? || index >= size
     return self.head = head.next_node if index.zero?
 
-    previous_node = find_node_before_index(index)
-    return if previous_node.nil?
+    previous_node = find_node_before_index index
 
     node_to_remove = previous_node.next_node
     previous_node.next_node = node_to_remove.next_node
@@ -133,8 +131,6 @@ class LinkedList
 
     until current_nodes_index == index
       previous_node = previous_node.next_node
-      return if previous_node.next_node.nil?
-
       current_nodes_index += 1
     end
 
